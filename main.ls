@@ -26,7 +26,8 @@ state = do
     console.log "initializing state machine..."
     if !(fs.exists-sync(\state.json)) => 
       console.log "No state found, generate from ID list..."
-      ids = fs.read-file-sync(\bgmopen1.csv).toString!split(\\n).map(-> 
+      # this should be point to the uid list csv file you want to use ...
+      ids = fs.read-file-sync(\uid-list/2015-04-28.csv).toString!split(\\n).map(-> 
         ret = /^(\d{8}),/.exec it
         if !ret => return null
         return ret.1
